@@ -1,0 +1,17 @@
+i have this json:
+
+{
+    "name" : "nodirbek",
+    "age" : 18,
+    "address" : {
+        "city" : "Namangan",
+        "street" : "Mustaqillik",
+        "home" : 64
+    }
+}
+
+regenerate this json i want to fuzztesting. write me json formats for fuzztesting do not write any code. only write json format write all json formats in one code with their definitions
+
+
+
+gemini api key - AIzaSyADELbqSRnwJKLRQe4WJrfj_bRqydWwYq4
