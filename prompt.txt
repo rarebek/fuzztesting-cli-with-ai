@@ -1,0 +1,15 @@
+I have this JSON file in bytes:
+{
+    "name": "Nodirbek",
+    "age": 18
+}
+
+give me fuzztesting options for me in one JSON.
+GENERATE ALL POSSIBILITIES. In one remove name field, in two remove age field and LIKE THIS
+Your example will be array of objects same with this below:
+
+{
+    "desctiption": "I changed this and this fields with these fields",
+    "name": your example,
+    "age": your example
+}
