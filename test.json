@@ -1,9 +1,0 @@
-{
-    "name" : "nodirbek",
-    "age" : 18,
-    "address" : {
-        "city" : "Namangan",
-        "street" : "Mustaqillik",
-        "home" : 64
-    }
-}
