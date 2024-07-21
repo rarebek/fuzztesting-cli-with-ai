@@ -1,11 +1,11 @@
 package main
 
 import (
-	"fuzztester-cli/cmd"
-	"fuzztester-cli/config"
 	"log"
 
 	"github.com/ilyakaznacheev/cleanenv"
+	"github.com/rarebek/fuzztesting-cli-with-ai/cmd"
+	"github.com/rarebek/fuzztesting-cli-with-ai/config"
 )
 
 func main() {

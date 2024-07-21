@@ -2,14 +2,14 @@ package cmd
 
 import (
 	"fmt"
-	"fuzztester-cli/gemini"
-	"fuzztester-cli/tools"
 	"io"
 	"log"
 	"os"
 	"strconv"
 
 	"github.com/google/generative-ai-go/genai"
+	"github.com/rarebek/fuzztesting-cli-with-ai/gemini"
+	"github.com/rarebek/fuzztesting-cli-with-ai/tools"
 	"github.com/spf13/cobra"
 )
 
