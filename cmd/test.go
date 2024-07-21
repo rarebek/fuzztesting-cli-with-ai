@@ -8,8 +8,8 @@ import (
 	"strconv"
 
 	"github.com/google/generative-ai-go/genai"
-	"github.com/rarebek/fuzztesting-cli-with-ai/gemini"
-	"github.com/rarebek/fuzztesting-cli-with-ai/tools"
+	"github.com/rarebek/fuzzer/gemini"
+	"github.com/rarebek/fuzzer/tools"
 	"github.com/spf13/cobra"
 )
 

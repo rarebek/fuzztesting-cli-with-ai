@@ -12,7 +12,7 @@ var rootCmd = &cobra.Command{
 	Use:   "tester",
 	Short: "tester is a fuzztesting cli application for testing your endpoints",
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("Welcome to the fuzztester-cli app")
+		fmt.Println("Welcome to the fuzztester cli tool. To get help, run fuzztesting-cli")
 	},
 }
 

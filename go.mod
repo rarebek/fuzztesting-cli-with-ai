@@ -1,4 +1,4 @@
-module github.com/rarebek/fuzztesting-cli-with-ai
+module github.com/rarebek/fuzzer
 
 go 1.22.4
 
