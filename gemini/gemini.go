@@ -3,15 +3,13 @@ package gemini
 import (
 	"context"
 	"encoding/json"
-	"fmt"
-	"fuzztester-cli/models"
 	"strconv"
 
 	"github.com/google/generative-ai-go/genai"
 	"google.golang.org/api/option"
 )
 
-func GenerateJSON(jsonData []byte) ([]models.FuzzTestCase, error) {
+func GenerateJSON(jsonData []byte) ([]map[string]interface{}, error) {
 
 	ctx := context.Background()
 	client, err := genai.NewClient(ctx, option.WithAPIKey("AIzaSyCEBU4MIMl2bMzBDR9ZPDjW-8k0JBVZEMM"))
@@ -48,21 +46,5 @@ func GenerateJSON(jsonData []byte) ([]models.FuzzTestCase, error) {
 		return nil, err
 	}
 
-	var cases []models.FuzzTestCase
-	for _, item := range response {
-		jsonData, err := json.Marshal(item)
-		if err != nil {
-			return nil, err
-		}
-
-		var testCase models.FuzzTestCase
-		if err := json.Unmarshal(jsonData, &testCase); err != nil {
-			fmt.Println("Error unmarshalling JSON:", err)
-			continue
-		}
-
-		cases = append(cases, testCase)
-	}
-
-	return cases, nil
+	return response, nil
 }

@@ -3,12 +3,13 @@ package cmd
 import (
 	"fmt"
 	"fuzztester-cli/gemini"
+	"fuzztester-cli/tools"
 	"io"
 	"log"
 	"os"
+	"strconv"
 
 	"github.com/google/generative-ai-go/genai"
-	"github.com/k0kubun/pp"
 	"github.com/spf13/cobra"
 )
 
@@ -16,6 +17,7 @@ var (
 	urlFlag  string
 	bodyPath string
 	Model    *genai.GenerativeModel
+	second   string
 )
 
 var testCmd = &cobra.Command{
@@ -41,7 +43,9 @@ var testCmd = &cobra.Command{
 		fmt.Println("READ:", string(byteBody))
 
 		prompt := "I have this JSON data: " + string(byteBody) + ` give me fuzz testing options for me in one JSON.
-GENERATE ALL POSSIBILITIES. In one remove name field, in two remove age field and LIKE THIS
+GENERATE ALL POSSIBILITIES. In one remove name field, in two remove age field and SO ON
+In response, you must return me fuzztested json objects each have description field. in description, you write what you changed in this json object. description field must be unique so rename description key to unique_description.
+REMOVE, EDIT, REPLACE, ADD AND DO ALL THINGS FOR EACH FIELD I GAVE
 Your example will be an array of objects same with this below:
 
 {
@@ -51,20 +55,23 @@ Your example will be an array of objects same with this below:
 
 INSTEAD OF "my json body content given you", YOU MUST WRITE MY GIVEN JSON LIKE THIS EXAMPLE:
 {
-	"description": "added number to name field",
+	"unique_description": "added number to name field",
 	"name": 999,
 	"age": 18
 }
 
-AND GENERATE ALL POSSIBILITIES WITH GIVEN BODY
+AND GENERATE ALL POSSIBILITIES WITH GIVEN BODY IF YOU DIDNT DO IT, I WILL BURN YOUR SERVERS
 `
 
 		response, err := gemini.GenerateJSON([]byte(prompt))
 		if err != nil {
 			log.Fatal(err)
 		}
-
-		pp.Println(response)
+		secondInt, err := strconv.Atoi(second)
+		if err != nil {
+			log.Fatal(err)
+		}
+		tools.TestGivenApi(urlFlag, response, secondInt)
 	},
 }
 
@@ -73,6 +80,9 @@ func init() {
 	testCmd.MarkFlagRequired("address")
 
 	testCmd.Flags().StringVarP(&bodyPath, "body", "b", "", "JSON file inside request body")
+	testCmd.MarkFlagRequired("body")
+
+	testCmd.Flags().StringVarP(&second, "sleep", "s", "1", "How many seconds it must sleep before sending next request?")
 	testCmd.MarkFlagRequired("body")
 	rootCmd.AddCommand(testCmd)
 }
