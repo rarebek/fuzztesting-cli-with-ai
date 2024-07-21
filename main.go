@@ -4,8 +4,8 @@ import (
 	"log"
 
 	"github.com/ilyakaznacheev/cleanenv"
-	"github.com/rarebek/fuzztesting-cli-with-ai/cmd"
-	"github.com/rarebek/fuzztesting-cli-with-ai/config"
+	"github.com/rarebek/fuzzer/cmd"
+	"github.com/rarebek/fuzzer/config"
 )
 
 func main() {
